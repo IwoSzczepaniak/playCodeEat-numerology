@@ -9,3 +9,6 @@ COMPATIBILITY_TABLE = {
     8: {1: True, 2: True, 3: False, 4: True, 5: False, 6: False, 7: True, 8: True, 9: False},
     9: {1: False, 2: False, 3: True, 4: False, 5: False, 6: True, 7: False, 8: False, 9: True},
 }
+
+def is_compatible(life_path_number, other_life_path_number):
+    return COMPATIBILITY_TABLE[life_path_number][other_life_path_number]

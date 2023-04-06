@@ -22,25 +22,29 @@ def test_same_user():
     assert list(user0.find_compatible_users(users)) == []
 
 def test_some_compatible_users():
-    users = [user3, user4, user5, user6]
+    users = [user6, user5, user4, user3]
     assert list(user0.find_compatible_users(users)) == [5, 4]
 
 def test_all_users_compatible():
-    users = [user1, user4, user5]
+    users = [user5, user4, user1]
     assert list(user0.find_compatible_users(users)) == [5, 4, 1]
 
 def test_all_users_incompatible():
     users = [user8, user9, user10]
     assert list(user0.find_compatible_users(users)) == []
 
+def test_correct_sorting():
+    users = [user3, user4, user5, user6]
+    assert list(user0.find_compatible_users(users)) == [5, 4]
+
 def test_premium_user():
-    users = [user0, user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, user11]
+    users = [user11, user10, user9, user8, user7, user6, user5, user4, user3, user2, user1]
     assert list(user0.find_compatible_users(users)) == [11, 7, 5, 4, 1]
 
 def test_not_premium_user():
-    users = [user0, user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, user11]
+    users = [user11, user10, user9, user8, user7, user6, user5, user4, user3, user2, user0]
     assert list(user1.find_compatible_users(users)) == [11, 7, 5]
 
 def test_not_premium_user_less_than_3_matches ():
-    users = [user1, user2, user3, user4, user5, user6]
+    users = [user6, user5, user4, user3, user2]
     assert list(user1.find_compatible_users(users)) == [5, 4]

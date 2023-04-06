@@ -1,4 +1,4 @@
-from helpers import COMPATIBILITY_TABLE
+from helpers import is_compatible
 
 class User:
     count = 0
