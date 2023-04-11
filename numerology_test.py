@@ -21,9 +21,13 @@ def test_same_user():
     users = [user0]
     assert list(user0.find_compatible_users(users)) == []
 
-def test_some_compatible_users():
+def test_some_compatible_users1():
     users = [user6, user5, user4, user3]
     assert list(user0.find_compatible_users(users)) == [5, 4]
+
+def test_some_compatible_users2():
+    users = [user11, user10, user9, user8, user7]
+    assert list(user0.find_compatible_users(users)) == [11, 7]
 
 def test_all_users_compatible():
     users = [user5, user4, user1]
