@@ -7,3 +7,20 @@ The goal of this feature is to help users find friends or even romantic partners
 Your task is to implement the `find_compatible_users(user, users)` method of the `User` class, which should return a list of ids of compatible users sorted from the most recently created to the older ones. Keep in mind that newer users have created ids that are greater than the older ones. As part of the client's requirements, users who have purchased the premium subscription should be able to see all their matches, while free users can only see up to 3 matches. 
 
 To check the compatibility between two life-path numbers, you can use `is_compatible(life_path_number, other_life_path_number)` method defined in the [helpers.py](https://github.com/u2i/playCodeEat-numerology/blob/master/helpers.py) file. For example, if two users have life path numbers *x* and *y,*  simply call `is_compatible(x, y)`, which will give you a Boolean value indicating their compatibility.
+
+
+Example:
+```
+# setup
+user0 = User("01012000", "Jane Doe")
+user1 = User("01022000", "John Doe")
+user2 = User("01012000", "Jane Smith")
+user3 = User("03272003", "Alice Lee")
+
+users = [user1, user2, user3]
+
+# result
+find_compatible_users(user0, users) == [3, 2]
+```
+
+

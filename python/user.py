@@ -1,5 +1,3 @@
-from helpers import is_compatible
-
 class User:
     count = 0
 
@@ -10,6 +8,3 @@ class User:
         self.birthdate = birthdate # format: "MMDDYYYY"
         self.name = name
         self.premium_user = premium_user
-        
-    def find_compatible_users(self, users):
-        # TODO: implement this method
