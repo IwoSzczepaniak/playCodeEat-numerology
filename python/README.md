@@ -1,3 +1,51 @@
+# Numerology Compatibility Finder
+
+## Setup & Testing
+
+### On macOS/Linux:
+```bash
+# Go to python directory
+cd python 
+
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Install requirements
+pip3 install -r requirements.txt
+
+# Run tests
+python3 -m pytest numerology_test.py -v
+
+# When you're done, deactivate the virtual environment
+deactivate
+```
+
+### On Windows:
+```bash
+# Go to python directory
+cd python 
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+.\venv\Scripts\activate
+
+# Install requirements
+pip install -r requirements.txt
+
+# Run tests
+python -m pytest numerology_test.py -v
+
+# When you're done, deactivate the virtual environment
+deactivate
+```
+
+Note: The tests have a 2-second timeout per test case to prevent infinite loops. If your implementation takes longer than 2 seconds for any test, it will fail with a timeout error.
+
 ## Problem Statement
 
 You have joined a team of developers who are working on a numerology application that provides insights into users' personalities based on their birth dates. Your client is excited about adding a new feature to it that helps users find new friends or even potential romantic partners based on their numerological compatibility.
@@ -10,13 +58,12 @@ Your task is to implement the `find_compatible_users(user, users)` method. It sh
 
 ### Enhanced version
 - Return a list of ids of compatible users sorted from the most recently created to the older ones. Keep in mind that newer users have created ids that are greater than the older ones. 
-- Users who have purchased the premium subscription should be able to see all their matches, while users with free subscription can only see up to 3. matches. 
+- Users who have purchased the premium subscription should be able to see all their matches, while users with free subscription can only see up to 3 matches. 
 
 To check the compatibility between two life-path numbers, you can use `is_compatible(life_path_number, other_life_path_number)` method defined in the [helpers.py](https://github.com/u2i/playCodeEat-numerology/blob/master/helpers.py) file. For example, if two users have life path numbers *x* and *y,*  simply call `is_compatible(x, y)`, which will give you a Boolean value indicating their compatibility.
 
-
 Example:
-```
+```python
 # setup
 user0 = User("01012000", "Jane Doe")
 user1 = User("01022000", "John Doe")
