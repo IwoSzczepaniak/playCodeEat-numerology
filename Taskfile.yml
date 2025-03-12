@@ -1,0 +1,54 @@
+version: '3'
+
+tasks:
+  setup-python:
+    desc: Setup Python environment and install dependencies
+    dir: python
+    cmds:
+      - python3 -m venv venv
+      - |
+        {{if eq OS "windows"}}
+        .\venv\Scripts\activate
+        {{else}}
+        source venv/bin/activate
+        {{end}}
+      - pip install -r requirements.txt
+    platforms: [darwin, linux, windows]
+
+  test-python:
+    desc: Run Python tests
+    dir: python
+    cmds:
+      - |
+        {{if eq OS "windows"}}
+        .\venv\Scripts\activate
+        {{else}}
+        source venv/bin/activate
+        {{end}}
+      - python3 -m pytest numerology_test.py -v
+
+  setup-js:
+    desc: Setup JavaScript environment and install dependencies
+    dir: js
+    cmds:
+      - npm install
+
+  test-js:
+    desc: Run JavaScript tests
+    dir: js
+    cmds:
+      - npm test
+
+  clean:
+    desc: Clean up virtual environments and dependencies
+    cmds:
+      - rm -rf python/venv
+      - rm -rf js/node_modules
+
+  all:
+    desc: Setup and test both Python and JavaScript implementations
+    cmds:
+      - task: setup-python
+      - task: test-python
+      - task: setup-js
+      - task: test-js 
