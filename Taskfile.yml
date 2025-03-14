@@ -5,9 +5,9 @@ tasks:
     desc: Setup Python environment and install dependencies
     dir: python
     cmds:
-      - rm -rf venv || true
-      - python3 -m venv venv
-      - . ./venv/bin/activate && pip install -r requirements.txt
+      - /bin/zsh -c 'rm -rf venv || true'
+      - /bin/zsh -c 'python3 -m venv venv'
+      - /bin/zsh -c 'source ./venv/bin/activate && pip install -r requirements.txt'
     platforms: [darwin, linux, windows]
     env:
       VIRTUAL_ENV: '{{.USER_WORKING_DIR}}/venv'
@@ -17,7 +17,7 @@ tasks:
     desc: Run Python tests
     dir: python
     cmds:
-      - . ./venv/bin/activate && python3 -m pytest numerology_test.py -v
+      - /bin/zsh ./venv/bin/activate && python3 -m pytest numerology_test.py -v
     env:
       VIRTUAL_ENV: '{{.USER_WORKING_DIR}}/venv'
       PATH: '{{.USER_WORKING_DIR}}/venv/bin:{{.PATH}}'
