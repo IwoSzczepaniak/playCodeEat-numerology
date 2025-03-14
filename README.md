@@ -74,3 +74,11 @@ Enhanced version:
 
 - not premium user
 - less than 3 matches
+
+## Available Task Commands
+This project uses [Task](https://taskfile.dev) for managing development commands.
+
+```bash
+task test-python     # Run Python tests
+task test-js         # Run JavaScript tests
+```
