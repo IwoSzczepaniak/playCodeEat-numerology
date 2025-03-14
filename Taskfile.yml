@@ -5,27 +5,22 @@ tasks:
     desc: Setup Python environment and install dependencies
     dir: python
     cmds:
+      - rm -rf venv || true
       - python3 -m venv venv
-      - |
-        {{if eq OS "windows"}}
-        .\venv\Scripts\activate
-        {{else}}
-        source venv/bin/activate
-        {{end}}
-      - pip install -r requirements.txt
+      - . ./venv/bin/activate && pip install -r requirements.txt
     platforms: [darwin, linux, windows]
+    env:
+      VIRTUAL_ENV: '{{.USER_WORKING_DIR}}/venv'
+      PATH: '{{.USER_WORKING_DIR}}/venv/bin:{{.PATH}}'
 
   test-python:
     desc: Run Python tests
     dir: python
     cmds:
-      - |
-        {{if eq OS "windows"}}
-        .\venv\Scripts\activate
-        {{else}}
-        source venv/bin/activate
-        {{end}}
-      - python3 -m pytest numerology_test.py -v
+      - . ./venv/bin/activate && python3 -m pytest numerology_test.py -v
+    env:
+      VIRTUAL_ENV: '{{.USER_WORKING_DIR}}/venv'
+      PATH: '{{.USER_WORKING_DIR}}/venv/bin:{{.PATH}}'
 
   setup-js:
     desc: Setup JavaScript environment and install dependencies
